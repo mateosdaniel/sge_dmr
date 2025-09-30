@@ -3,8 +3,5 @@
 - [PR0401: Ejercicios básicos](./pr0401/pr0401.md)
 
 
-<div style="text-align: right;">
-
-[Atras](../index.md)
-
-</div>
+---
+[Atrás](../index.md)
