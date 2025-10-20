@@ -1,3 +1,6 @@
+# Generador de contraseñas
+# Crea un programa que genere una contraseña aleatoria de una longitud que indique el usuario. La contraseña debe incluir letras mayúsculas, minúsculas, números y símbolos especiales.
+
 from random import *
 
 lon = int(input("Dime la longitud de la contraseña: "))
