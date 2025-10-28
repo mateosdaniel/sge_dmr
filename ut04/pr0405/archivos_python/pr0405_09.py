@@ -1,19 +1,15 @@
-# Agrupación de palabras por longitud
+# 9. Agrupación de palabras por longitud
 # Dada una lista de palabras, crea un diccionario donde la clave es la longitud de la palabra y el valor es una lista de palabras de esa longitud. Usa map y filter 
 
 palabras = ["sol", "luna", "estrella", "cielo", "mar"]
-lista = []
 res = {}
-
-def longitud(i):
-    for palabra in palabras:
-        res[len(palabra)] = any
-    return i 
     
-def palabra(palabra):
-    return palabra in res
+def logitudes(palabra):
+    return len(palabra)
+    
+listLen = set(map(logitudes, palabras))
+for longitud in listLen:
+    res[longitud] = list(filter(lambda pal: len(pal) == longitud , palabras))
 
-
-res[list((map(longitud, palabras)))] = list(filter(palabra, palabras))
-print (res)
+print(res)
 
