@@ -1,0 +1,55 @@
+services:
+  postgresdev:
+    image: postgres:14
+    container_name: db_dev
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=paso
+    ports:
+      - '5432:5432'
+    volumes:
+      - ~/OdooDev/dataPG:/var/lib/postgresql/data
+
+  odoodev:
+    image: odoo:16
+    container_name: odoo_dev
+    environment:
+      - HOST=postgresdev
+      - USER=odoo
+      - PASSWORD=paso
+    ports:
+      - '8069:8069'
+    volumes:
+      - ~/OdooDev/volumesOdoo/addons:/mnt/extra-addons
+      - ~/OdooDev/volumesOdoo/filestore:/var/lib/odoo/filestore
+      - ~/OdooDev/volumesOdoo/sessions:/var/lib/odoo/sessions
+    depends_on:
+      - postgresdev
+    command: --dev=all
+
+  postgresprod:
+    image: postgres:14
+    container_name: db_prod
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=paso_prod
+    ports:
+      - '5433:5432'
+    volumes:
+      - ~/OdooProd/dataPG:/var/lib/postgresql/data
+
+  odooprod:
+    image: odoo:16
+    container_name: odoo_prod
+    environment:
+      - HOST=postgresprod
+      - USER=odoo
+      - PASSWORD=paso_prod
+    ports:
+      - '8070:8069'
+    depends_on:
+      - postgresprod
+    volumes:
+      - ~/OdooProd/volumesOdoo/addons:/mnt/extra-addons
