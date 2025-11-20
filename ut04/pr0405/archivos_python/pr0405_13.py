@@ -6,6 +6,11 @@ from functools import reduce
 funciones = [lambda x: x*2, lambda x: x+3, lambda x: x-1]
 numeros = [1, 2, 3]
 
-for i in range(len(funciones)):
-    res = reduce(funciones[i], numeros, 0)
-    print (res)
+# Función para aplicar una función sobre toda la lista
+def aplicar_lista(func, lista):
+    return [func(x) for x in lista]
+
+# Reduce para aplicar todas las funciones en secuencia
+resultado = reduce(lambda acc, f: aplicar_lista(f, acc), funciones, numeros)
+
+print(resultado)
